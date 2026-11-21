@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <!-- Permite tildes y caracteres especiales -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Diseño adaptable -->
+  <title>Historias de 24 horas</title> <!-- Título de la pestaña -->
+  <link rel="stylesheet" href="style.css"> <!-- Conecta los estilos -->
+</head>
+<body>
+  <main class="contenedor">
+    <header>
+      <p class="etiqueta">MOMENTOS QUE DURAN 24 HORAS</p>
+      <h1>Historias</h1>
+      <p class="subtitulo">Comparte una foto con tus amigos.</p>
+    </header>
+
+    <section class="seccion-historias" aria-label="Lista de historias">
+      <div class="lista-historias" id="lista-historias"></div> <!-- Aquí aparecen las historias -->
+    </section>
+
+    <section class="bienvenida" id="bienvenida"> <!-- Mensaje cuando no hay historias -->
+      <div class="icono-bienvenida">◉</div>
+      <h2>Aún no hay historias</h2>
+      <p>Presiona el botón + para compartir tu primera fotografía.</p>
+    </section>
+
+    <input id="selector-imagen" type="file" accept="image/*" hidden> <!-- Selector de fotografías -->
+    <p id="mensaje" class="mensaje" role="status"></p> <!-- Mensajes de la aplicación -->
+  </main>
+
+  <div class="visor oculto" id="visor"> <!-- Ventana para visualizar historias -->
+    <div class="visor-contenido" id="visor-contenido">
+      <div class="barras-progreso" id="barras-progreso"></div> <!-- Progreso de cada historia -->
+      <div class="visor-superior">
+        <div class="perfil-visor">
+          <div class="avatar-visor">T</div>
+          <div><strong>Mi historia</strong><small id="tiempo-historia">Ahora</small></div>
+        </div>
+        <button class="cerrar" id="cerrar-visor" type="button" aria-label="Cerrar">×</button>
+      </div>
+      <img id="imagen-historia" class="imagen-historia" src="" alt="Fotografía de la historia">
+      <button class="zona-anterior" id="anterior" type="button" aria-label="Historia anterior"></button>
+      <button class="zona-siguiente" id="siguiente" type="button" aria-label="Siguiente historia"></button>
+      <p class="instruccion">Toca los lados o desliza para cambiar de historia</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script> <!-- Conecta el JavaScript -->
+</body>
+</html>

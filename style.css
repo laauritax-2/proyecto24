@@ -1,0 +1,115 @@
+/* Configuración general */
+* { box-sizing: border-box; } /* Incluye bordes y espacios en el tamaño */
+
+body {
+  margin: 0; /* Quita el margen predeterminado */
+  min-height: 100vh; /* Ocupa toda la pantalla */
+  padding: 35px 18px; /* Espacio exterior */
+  font-family: Arial, sans-serif; /* Letra sencilla */
+  color: #263244; /* Color del texto */
+  background: #f5f7fb; /* Fondo claro */
+}
+.contenedor { width: 100%; max-width: 900px; margin: 0 auto; } /* Centra y limita el contenido */
+header { margin-bottom: 28px; } /* Separa el encabezado */
+.etiqueta { margin: 0 0 8px; color: #7183a0; font-size: 11px; font-weight: bold; letter-spacing: 1.5px; }
+h1 { margin: 0 0 8px; font-size: clamp(30px, 5vw, 40px); } /* Título adaptable */
+.subtitulo { margin: 0; color: #78869a; } /* Texto secundario */
+
+.seccion-historias {
+  padding: 18px; /* Espacio interior */
+  border: 1px solid #e4e9f1; /* Borde suave */
+  border-radius: 16px; /* Esquinas redondeadas */
+  background: white; /* Fondo blanco */
+  box-shadow: 0 8px 25px #2538580a; /* Sombra ligera */
+}
+.lista-historias {
+  display: flex; /* Historias en una fila */
+  align-items: center; /* Centra verticalmente */
+  gap: 15px; /* Espacio entre historias */
+  min-height: 78px; /* Altura mínima */
+  overflow-x: auto; /* Permite desplazarse horizontalmente */
+  padding: 3px 2px 8px; /* Espacio interior */
+}
+.elemento-historia {
+  display: flex; /* Organiza imagen y nombre */
+  flex: 0 0 62px; /* Mantiene el ancho */
+  flex-direction: column; /* Nombre debajo del círculo */
+  align-items: center; /* Centra los elementos */
+  gap: 6px; /* Espacio entre elementos */
+  padding: 0; border: 0; color: #596579; background: transparent; cursor: pointer;
+}
+.circulo-historia {
+  display: grid; width: 62px; height: 62px; place-items: center; overflow: hidden;
+  border: 2px solid #e0e5ed; border-radius: 50%; background: #f1f4f8;
+}
+.circulo-historia img { width: 100%; height: 100%; object-fit: cover; } /* Recorta la foto dentro del círculo */
+.nombre-historia {
+  max-width: 68px; overflow: hidden; font-size: 11px;
+  text-overflow: ellipsis; white-space: nowrap;
+}
+.boton-agregar .circulo-historia { border: 2px solid #d9e0eb; color: #64748b; font-size: 31px; }
+.boton-agregar:hover .circulo-historia { border-color: #8295b3; background: #f6f8fb; }
+
+.bienvenida {
+  margin-top: 28px; padding: 55px 20px; border: 1px dashed #d5deea;
+  border-radius: 16px; text-align: center; background: #ffffffa8;
+}
+.icono-bienvenida {
+  display: grid; width: 58px; height: 58px; margin: 0 auto 15px;
+  place-items: center; border-radius: 50%; color: #7183a0; background: #edf1f7; font-size: 28px;
+}
+.bienvenida h2 { margin: 0 0 8px; font-size: 20px; }
+.bienvenida p { margin: 0; color: #7b8798; font-size: 14px; line-height: 1.5; }
+.mensaje { min-height: 20px; margin-top: 14px; color: #64748b; font-size: 13px; }
+.mensaje.error { color: #c0392b; }
+.oculto { display: none !important; } /* Oculta elementos */
+
+.visor {
+  position: fixed; z-index: 10; inset: 0; display: grid; padding: 20px;
+  place-items: center; background: #10131bee;
+}
+.visor-contenido {
+  position: relative; width: min(100%, 430px); height: min(88vh, 760px);
+  overflow: hidden; border-radius: 16px; background: #17191e;
+  touch-action: pan-y; user-select: none;
+}
+.barras-progreso {
+  position: absolute; z-index: 3; top: 12px; right: 12px; left: 12px;
+  display: flex; gap: 4px;
+}
+.barra { flex: 1; height: 3px; overflow: hidden; border-radius: 5px; background: #ffffff66; }
+.progreso { width: 0; height: 100%; background: white; }
+.progreso.completa { width: 100%; }
+.progreso.activa { animation: avanzar 3s linear forwards; } /* Llena la barra en tres segundos */
+@keyframes avanzar { from { width: 0; } to { width: 100%; } }
+
+.visor-superior {
+  position: absolute; z-index: 4; top: 25px; right: 15px; left: 15px;
+  display: flex; align-items: center; justify-content: space-between; color: white;
+}
+.perfil-visor { display: flex; align-items: center; gap: 9px; font-size: 13px; }
+.perfil-visor small { display: block; margin-top: 3px; color: #d3d3d3; font-size: 10px; }
+.avatar-visor {
+  display: grid; width: 32px; height: 32px; place-items: center;
+  border-radius: 50%; color: #263244; background: white; font-weight: bold;
+}
+button { cursor: pointer; }
+.cerrar { padding: 0 5px; border: 0; color: white; background: transparent; font-size: 31px; }
+.imagen-historia { width: 100%; height: 100%; object-fit: contain; background: #17191e; }
+.zona-anterior, .zona-siguiente {
+  position: absolute; z-index: 2; top: 75px; bottom: 0; padding: 0;
+  border: 0; border-radius: 0; background: transparent;
+}
+.zona-anterior { left: 0; width: 35%; }
+.zona-siguiente { right: 0; width: 65%; }
+.zona-anterior:hover, .zona-siguiente:hover { background: transparent; }
+.instruccion {
+  position: absolute; z-index: 3; right: 8px; bottom: 5px; left: 8px;
+  color: #ffffffa8; text-align: center; font-size: 10px; pointer-events: none;
+}
+@media (max-width: 520px) {
+  body { padding: 25px 12px; } /* Reduce márgenes en celulares */
+  .seccion-historias { padding: 14px; }
+  .visor { padding: 0; }
+  .visor-contenido { width: 100%; height: 100%; max-height: none; border-radius: 0; }
+}
